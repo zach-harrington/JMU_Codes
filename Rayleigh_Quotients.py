@@ -41,7 +41,7 @@ Big_O = E[0] / E[1]
 power_v = np.empty((M,k+1))
 power_Lambda = np.zeros(k+1)
 
-power_v[:,0] = np.array([1/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5)])
+power_v[:,0] = np.array([1/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5)]) # initial vector
 
 
 for i in range(1,k+1):
@@ -52,7 +52,7 @@ for i in range(1,k+1):
     power_value_error = np.abs(eigenvalue - power_Lambda[i])
     power_vector_error = np.sqrt(sum((eigenvector - power_v[:,i]) ** 2 ))
     print(" Power Value Error:", power_value_error, "\n",
-          "Power Vector Error:", power_vector_error, "\n")
+          "Power Vector Error:", power_vector_error, "\n") # each value converges
 
 
 
@@ -60,7 +60,7 @@ for i in range(1,k+1):
 
 Inv_v = np.empty((M,k+1))
 Inv_lambda = np.zeros(k+1)
-Inv_v[:,0] = np.array([1/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5)])
+Inv_v[:,0] = np.array([1/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5)]) # initial vector
 
 
     # pick mu close to eigenvalue 
@@ -74,7 +74,7 @@ for i in range(1,k+1):
     Inv_value_error = np.abs(E[3] - Inv_lambda[i])
     Inv_vector_error = np.sqrt(sum((V[:,3] - Inv_v[:,i]) ** 2 ))
     print(" Inverse Value Error:", Inv_value_error, "\n", 
-          "Inverse Vector Error:", Inv_vector_error, "\n")
+          "Inverse Vector Error:", Inv_vector_error, "\n") # each value converges
 
 
 
@@ -82,9 +82,9 @@ for i in range(1,k+1):
 
 Ray_v = np.empty((M,k+1))
 Ray_lambda = np.zeros(k+1)
-Ray_v[:,0] = np.array([1/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5)])
+Ray_v[:,0] = np.array([1/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5), 0, np.sqrt(2)/np.sqrt(5)]) # initial vector
 
-Ray_lambda[0] = np.matmul(np.matmul(np.transpose(Ray_v[:,0]), A), Ray_v[:,0])
+Ray_lambda[0] = np.matmul(np.matmul(np.transpose(Ray_v[:,0]), A), Ray_v[:,0]) # initial lambda
 
 for i in range(1,k+1):
     w = np.matmul( np.linalg.inv(A - Ray_lambda[i-1] * I), Ray_v[:,i-1])
@@ -94,7 +94,7 @@ for i in range(1,k+1):
     Ray_value_error = np.abs(E[1] - Ray_lambda[i])
     Ray_vector_error = np.sqrt(sum((V[:,1] - Ray_v[:,i]) ** 2 ))
     print(" Rayleigh Iteration Value Error:", Ray_value_error, "\n", 
-          "Rayleigh Iteration Vector Error:", Ray_vector_error, "\n")
+          "Rayleigh Iteration Vector Error:", Ray_vector_error, "\n") # each value converges
     
 
 
